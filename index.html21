@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mounia ❤️</title>
+<style>
+/* الألوان الجديدة: الأبيض البيجي والوردي */
+body { margin: 0; background: #FFFDD0; color: #FF1493; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; text-align: center; }
+#container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; }
+button { padding: 15px 35px; font-size: 18px; border: none; border-radius: 30px; background: #FF1493; color: white; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3); transition: 0.3s; }
+button:hover { background: #ff4da6; transform: scale(1.05); }
+#text { font-size: 26px; opacity: 0; transition: 0.8s; font-weight: bold; }
+.glow { font-size: 45px; color: #FF1493; text-shadow: 0 0 15px rgba(255, 20, 147, 0.2); animation: pulse 1.5s infinite; }
+img { width: 220px; border-radius: 20px; margin-top: 20px; opacity: 0; filter: blur(10px); transition: 2s; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+.heart { position: fixed; color: #FFB6C1; animation: float 5s linear infinite; z-index: -1; }
+@keyframes float { from {transform: translateY(100vh); opacity: 0.8;} to {transform: translateY(-10vh); opacity: 0;} }
+@keyframes pulse { from {transform: scale(1);} to {transform: scale(1.1);} }
+</style>
+</head>
+<body>
+<div id="container">
+  <h2 style="color: #FF1493;">Something special is waiting...</h2>
+  <button onclick="start()">Only Mounia can open this ❤️</button>
+</div>
+<audio id="music" src="https://raw.githubusercontent.com/amirrezik982-cmyk/My-project-/main/HnVideoEditor_2026_04_24_212446875.mp3"></audio>
+
+<script>
+function start(){
+  document.getElementById("music").play();
+  document.getElementById("container").innerHTML = "<div id='text'>Wait for it...</div>";
+  let t = document.getElementById("text");
+  setTimeout(() => { t.style.opacity = 1; }, 100);
+  
+  // الرسائل الموجهة لمونيا
+  let messages = ["Hey...", "If your name is Mounia...", "Then this is for you", "I wanted to show you something...", "Something as beautiful as you...", "Ready?"];
+  let i = 0;
+  setTimeout(() => { show(); }, 2000);
+  
+  function show(){
+    if(i < messages.length){
+      t.style.opacity = 0;
+      setTimeout(()=>{ t.innerText = messages[i]; t.style.opacity = 1; i++; },500);
+      setTimeout(show, 2500);
+    } else { finalScene(); }
+  }
+}
+
+function finalScene(){
+  document.getElementById("container").innerHTML = `
+    <div class="glow">MOUNIA ❤️</div>
+    <img id="img" src="https://raw.githubusercontent.com/amirrezik982-cmyk/My-project-/main/nada.png">
+    <div class="glow" style="font-size: 30px; margin-top: 10px;">You are amazing!</div>
+  `;
+  let img = document.getElementById("img");
+  setTimeout(()=>{ img.style.opacity = 1; img.style.filter = "blur(0)"; },1000);
+  
+  // قلوب بلون وردي فاتح تطير في الخلفية البيج
+  setInterval(()=>{
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (20 + Math.random()*30) + "px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(), 5000);
+  },300);
+}
+</script>
+</body>
+</html>

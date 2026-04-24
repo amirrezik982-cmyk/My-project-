@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For mounia ❤️</title>
+<style>
+body { margin: 0; background: #ff85a2; color: white; font-family: Arial, sans-serif; overflow: hidden; text-align: center; }
+#container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; }
+button { padding: 15px 30px; font-size: 18px; border: none; border-radius: 30px; background: white; color: #ff85a2; font-weight: bold; cursor: pointer; box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); }
+#text { font-size: 26px; opacity: 0; transition: 0.8s; font-weight: bold; }
+.glow { font-size: 45px; color: white; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); animation: pulse 1.5s infinite; }
+img { width: 220px; border-radius: 20px; margin-top: 20px; opacity: 0; filter: blur(10px); transition: 2s; box-shadow: 0 0 30px rgba(255, 255, 255, 0.5); }
+.heart { position: fixed; color: white; animation: float 5s linear infinite; z-index: -1; }
+@keyframes float { from {transform: translateY(100vh); opacity: 0.8;} to {transform: translateY(-10vh); opacity: 0;} }
+@keyframes pulse { from {transform: scale(1);} to {transform: scale(1.1);} }
+</style>
+</head>
+<body>
+<div id="container">
+  <h2 style="color: white;">This is not for everyone...</h2>
+  <button onclick="start()">Only mounia can open this ❤️</button>
+</div>
+<audio id="music" src="https://raw.githubusercontent.com/amirrezik982-cmyk/My-project-/main/HnVideoEditor_2026_04_24_212446875.mp3"></audio>
+<script>
+function start(){
+  document.getElementById("music").play();
+  document.getElementById("container").innerHTML = "<div id='text'>Please wait a moment...</div>";
+  let t = document.getElementById("text");
+  setTimeout(() => { t.style.opacity = 1; }, 100);
+  let messages = ["Hey...", "If your name is mounia...", "Then this is for you", "I tried to say this before...", "But words failed me...", "So I made this..."];
+  let i = 0;
+  setTimeout(() => { show(); }, 2000);
+  function show(){
+    if(i < messages.length){
+      t.style.opacity = 0;
+      setTimeout(()=>{ t.innerText = messages[i]; t.style.opacity = 1; i++; },500);
+      setTimeout(show, 2500);
+    } else { finalScene(); }
+  }
+}
+function finalScene(){
+  document.getElementById("container").innerHTML = `
+    <div class="glow">MOUNIA ❤️</div>
+    <img id="img" src="https://raw.githubusercontent.com/amirrezik982-cmda.png">
+    <div class="glow">I LOVE YOU</div>
+  `;
+  let img = document.getElementById("img");
+  setTimeout(()=>{ img.style.opacity = 1; img.style.filter = "blur(0)"; },1000);
+  setInterval(()=>{
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (20 + Math.random()*30) + "px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(), 5000);
+  },300);
+  setTimeout(()=>{
+    document.body.onclick = ()=>{
+      let p = document.createElement("p");
+      p.innerText = "And I’d choose you... every single time.";
+      p.style.fontSize = "20px"; p.style.marginTop = "20px"; p.style.color = "white";
+      document.getElementById("container").appendChild(p);
+    }
+  }, 2000);
+}
+</script>
+</body>
+</html>
